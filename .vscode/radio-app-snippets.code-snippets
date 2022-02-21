@@ -1,0 +1,30 @@
+{
+  "Basic React Native Component": {
+    "prefix": "frc",
+    "body": [
+      "import { Wrapper } from './styles';",
+      "",
+      "type Props = {",
+      "",
+      "}",
+      "",
+      "export function Name({}: Props){",
+      "  return (",
+      "    <Wrapper>",
+      "",
+      "    </Wrapper>",
+      "  );",
+      "}"
+    ],
+    "description": "Create the structure of a react native component"
+  },
+  "StyleSheet React Native Object": {
+    "prefix": "fsc",
+    "body": [
+      "import styled from 'styled-components/native'",
+      "",
+      "export const Wrapper = styled.View``"
+    ],
+    "description": "Create a style object with Stylesheet to separate file."
+  }
+}
