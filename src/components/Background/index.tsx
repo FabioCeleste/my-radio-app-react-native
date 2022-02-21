@@ -2,8 +2,16 @@ import { Wrapper } from "./styles";
 
 import backgroundImage from "../../assets/background.png";
 
-type Props = {};
+import { ReactNode } from "react";
 
-export function Background({}: Props) {
-  return <Wrapper source={backgroundImage} blurRadius={7}></Wrapper>;
+type Props = {
+  children: ReactNode;
+};
+
+export function Background({ children }: Props) {
+  return (
+    <Wrapper source={backgroundImage} blurRadius={7}>
+      {children}
+    </Wrapper>
+  );
 }
