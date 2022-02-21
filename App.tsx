@@ -2,7 +2,7 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import { Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto";
 
-import { SignIn } from "./src/screens/SignIn";
+import { Routes } from "./src/routes";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -13,5 +13,5 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-  return <SignIn />;
+  return <Routes />;
 }

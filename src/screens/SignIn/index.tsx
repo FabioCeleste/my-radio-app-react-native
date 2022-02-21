@@ -1,4 +1,5 @@
 import { Background } from "../../components/Background";
+import { useNavigation } from "@react-navigation/native";
 
 import logoImage from "../../assets/logo.png";
 import happyWoman from "../../assets/happy-woman.png";
@@ -20,6 +21,12 @@ import { LinearGradient } from "expo-linear-gradient";
 type Props = {};
 
 export function SignIn({}: Props) {
+  const navigation = useNavigation();
+
+  function handleGetStarted() {
+    navigation.navigate("EnterName");
+  }
+
   return (
     <Background>
       <Wrapper>
@@ -43,7 +50,12 @@ export function SignIn({}: Props) {
         </View>
 
         <ButtonWrapper>
-          <Button title="Get Started" leftMargin={52} rightMargin={52} />
+          <Button
+            title="Get Started"
+            leftMargin={52}
+            rightMargin={52}
+            onPress={handleGetStarted}
+          />
         </ButtonWrapper>
 
         <HappyWoman source={happyWoman} />
