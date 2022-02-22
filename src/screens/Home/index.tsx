@@ -1,4 +1,4 @@
-import { FlatList } from "react-native";
+import { FlatList, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 import {
@@ -11,20 +11,32 @@ import {
   Span,
   HelloWrapper,
   FlatWrapper,
+  PlayButton,
+  Playback,
 } from "./styles";
 
 import PlayIcon from "../../assets/play-icon.svg";
+
 import { MusicCard, RadioProps } from "../../components/MusicCard";
-import { FlatCardSeparator } from "../../components/FlatCardSeparator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Audio } from "expo-av";
+import { RectButton } from "react-native-gesture-handler";
 
 type Props = {};
 
 export function Home({}: Props) {
-  const [activeRadio, setActiveRadio] = useState("1");
+  const [activeRadio, setActiveRadio] = useState("-1");
+  const [sound, setSound] = useState<Audio.Sound>();
+  const [playState, setPlayState] = useState(false);
 
   const username = "Fabio";
   const category = "Radios";
+
+  useEffect(() => {
+    test();
+    const song = new Audio.Sound();
+    setSound(song);
+  }, []);
 
   const radios = [
     {
@@ -47,8 +59,51 @@ export function Home({}: Props) {
     },
   ];
 
-  function handleActiveRadio(radio: RadioProps) {
+  async function test() {
+    await Audio.setAudioModeAsync({
+      staysActiveInBackground: true,
+    });
+  }
+
+  async function getMusic(radio: RadioProps) {
+    if (activeRadio === "-1") {
+      const { sound: song } = await Audio.Sound.createAsync({
+        uri: radio.audioLink,
+      });
+
+      setSound(song);
+
+      await song.playAsync();
+    } else {
+      await sound?.stopAsync();
+
+      setSound({} as Audio.Sound);
+
+      const { sound: song } = await Audio.Sound.createAsync({
+        uri: radio.audioLink,
+      });
+
+      await song.playAsync();
+
+      setSound(song);
+    }
+    setPlayState(true);
+  }
+
+  async function handleActiveRadio(radio: RadioProps) {
+    await getMusic(radio);
     setActiveRadio(radio.id);
+  }
+  async function handlePlayButton() {
+    if (activeRadio === "-1") return;
+
+    if (playState) {
+      await sound?.stopAsync();
+      setPlayState(!playState);
+    } else {
+      await sound?.playAsync();
+      setPlayState(!playState);
+    }
   }
 
   return (
@@ -86,6 +141,18 @@ export function Home({}: Props) {
             )}
           />
         </FlatWrapper>
+
+        <Playback>
+          <PlayButton>
+            <RectButton onPress={() => handlePlayButton()}>
+              <Feather
+                name={playState ? "pause" : "play"}
+                size={42}
+                color="white"
+              />
+            </RectButton>
+          </PlayButton>
+        </Playback>
       </Content>
     </Wrapper>
   );

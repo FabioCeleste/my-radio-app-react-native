@@ -5,6 +5,7 @@ export const theme = {
     side: "#080833",
     grey: "#32324E",
     greyText: "rgba(255, 255, 255, 0.2)",
+    greyButton: "rgba(5, 216, 232, 0.2)",
   },
   fonts: {
     roboto400: "Roboto_400Regular",

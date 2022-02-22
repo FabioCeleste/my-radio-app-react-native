@@ -50,3 +50,18 @@ export const Subtitle = styled.Text`
 export const FlatWrapper = styled.View`
   align-items: center;
 `;
+
+export const Playback = styled.View`
+  position: absolute;
+  align-self: center;
+  bottom: 45px;
+`;
+
+export const PlayButton = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background: ${theme.colors.pink};
+`;
