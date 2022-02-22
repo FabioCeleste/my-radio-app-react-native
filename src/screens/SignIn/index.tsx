@@ -28,7 +28,7 @@ export function SignIn({}: Props) {
   }
 
   return (
-    <Background>
+    <Background hasBlur>
       <Wrapper>
         <View style={{ flex: 1 }}>
           <LogoView>

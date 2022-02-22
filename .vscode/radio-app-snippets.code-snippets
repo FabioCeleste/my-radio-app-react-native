@@ -8,7 +8,7 @@
       "",
       "}",
       "",
-      "export function Name({}: Props){",
+      "export function ${TM_DIRECTORY/^.+\\\\(.*)$/$1/}({}: Props){",
       "  return (",
       "    <Wrapper>",
       "",

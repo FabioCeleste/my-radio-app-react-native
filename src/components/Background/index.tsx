@@ -6,11 +6,12 @@ import { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
+  hasBlur?: boolean;
 };
 
-export function Background({ children }: Props) {
+export function Background({ children, hasBlur }: Props) {
   return (
-    <Wrapper source={backgroundImage} blurRadius={7}>
+    <Wrapper source={backgroundImage} blurRadius={hasBlur ? 7 : 0}>
       {children}
     </Wrapper>
   );
