@@ -14,7 +14,7 @@ import {
   PlayButton,
   Playback,
 } from "./styles";
-
+import { radios } from "../../services/radios";
 import PlayIcon from "../../assets/play-icon.svg";
 
 import { MusicCard, RadioProps } from "../../components/MusicCard";
@@ -37,27 +37,6 @@ export function Home({}: Props) {
     const song = new Audio.Sound();
     setSound(song);
   }, []);
-
-  const radios = [
-    {
-      id: "1",
-      radioName: "TripleJ",
-      radioNation: "UK",
-      audioLink: "http://live-radio01.mediahubaustralia.com/4TJW/mp3/",
-    },
-    {
-      id: "2",
-      radioName: "TripleJ",
-      radioNation: "UK",
-      audioLink: "http://live-radio01.mediahubaustralia.com/4TJW/mp3/",
-    },
-    {
-      id: "3",
-      radioName: "TripleJ",
-      radioNation: "UK",
-      audioLink: "http://live-radio01.mediahubaustralia.com/4TJW/mp3/",
-    },
-  ];
 
   async function test() {
     await Audio.setAudioModeAsync({
@@ -141,7 +120,6 @@ export function Home({}: Props) {
             )}
           />
         </FlatWrapper>
-
         <Playback>
           <PlayButton>
             <RectButton onPress={() => handlePlayButton()}>
@@ -156,4 +134,18 @@ export function Home({}: Props) {
       </Content>
     </Wrapper>
   );
+}
+
+{
+  /* <Playback>
+          <PlayButton>
+            <RectButton onPress={() => handlePlayButton()}>
+              <Feather
+                name={playState ? "pause" : "play"}
+                size={42}
+                color="white"
+              />
+            </RectButton>
+          </PlayButton>
+        </Playback> */
 }

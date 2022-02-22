@@ -49,6 +49,8 @@ export const Subtitle = styled.Text`
 
 export const FlatWrapper = styled.View`
   align-items: center;
+  margin-top: 30px;
+  margin-bottom: 250px;
 `;
 
 export const Playback = styled.View`
