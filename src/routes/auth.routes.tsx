@@ -13,9 +13,9 @@ export function AuthRoutes() {
         headerMode: "none",
       }}
     >
-      <Screen name="Home" component={Home} />
       <Screen name="SignIn" component={SignIn} />
       <Screen name="EnterName" component={EnterName} />
+      <Screen name="Home" component={Home} />
     </Navigator>
   );
 }

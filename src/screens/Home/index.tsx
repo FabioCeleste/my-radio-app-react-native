@@ -21,6 +21,7 @@ import { MusicCard, RadioProps } from "../../components/MusicCard";
 import { useEffect, useState } from "react";
 import { Audio } from "expo-av";
 import { RectButton } from "react-native-gesture-handler";
+import { useAuth } from "../../hooks/auth";
 
 type Props = {};
 
@@ -29,7 +30,8 @@ export function Home({}: Props) {
   const [sound, setSound] = useState<Audio.Sound>();
   const [playState, setPlayState] = useState(false);
 
-  const username = "Fabio";
+  const { user } = useAuth();
+
   const category = "Radios";
 
   useEffect(() => {
@@ -99,7 +101,7 @@ export function Home({}: Props) {
       <Content>
         <HelloWrapper>
           <Title>Hello </Title>
-          <Span>{username}</Span>
+          <Span>{user.username}</Span>
         </HelloWrapper>
 
         <Subtitle>{category}</Subtitle>

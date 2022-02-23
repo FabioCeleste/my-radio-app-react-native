@@ -8,6 +8,7 @@ import {
 } from "@expo-google-fonts/roboto";
 
 import { Routes } from "./src/routes";
+import { AuthProvider } from "./src/hooks/auth";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,5 +21,9 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-  return <Routes />;
+  return (
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
+  );
 }

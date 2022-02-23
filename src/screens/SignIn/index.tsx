@@ -17,6 +17,8 @@ import {
 import { Button } from "../../components/Button";
 import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useAuth } from "../../hooks/auth";
+import { useEffect } from "react";
 
 type Props = {};
 
